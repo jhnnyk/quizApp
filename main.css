@@ -7,3 +7,12 @@ h1 {
   font-family: 'Raleway', Sans-Serif;
   font-size: 44px;
 }
+
+button:hover:enabled {
+  cursor: pointer;
+}
+
+.container {
+  max-width: 800px;
+  margin: 100px auto;
+}
