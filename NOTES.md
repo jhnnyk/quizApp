@@ -1,10 +1,19 @@
-### Ideas
-* Nolan's
-* 14ers
-* Ultrarunning
-* Kids quiz
-* Simpsons
-* Mt. Evans
+## User Stories
+- [ ] A User should be able to click a button on the start screen to start the quiz
+- [ ] Users should be prompted through a series of multiple choice questions
+    - [ ] Users should be able to answer the questions
+    - [ ] Users should be asked questions one after the other
+    - [ ] Users should only be prompted with one question at a time
+- [ ] Users should be able to answer questions with the mouse *or* the keyboard
+- [ ] Users should **not** be able to skip questions
+- [ ] Users should be able to see what question they're on (ie question 7/10)
+- [ ] Users should be able to see their current score
+- [ ] Upon submitting an answer, users should:
+    - [ ] receive textual feedback about their answer
+        - [ ] if they were incorrect, they should be told the correct answer
+    - [ ] be able to move to the next question
+- [ ] Users should be shown their overall score at the end of the quiz
+- [ ] Users should be able to start a new game
 
 ## Mt. Evans Questions
 1. What is the elevation at the summit of Mt. Evans?
@@ -27,3 +36,12 @@
     * 3-5 degrees F
 10. Some tundra plants can take as long as _____ before they bloom for the first time.
     * 60 years
+
+---
+## Brainstorming Ideas
+* Nolan's
+* 14ers
+* Ultrarunning
+* Kids quiz
+* Simpsons
+* Mt. Evans
