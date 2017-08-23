@@ -73,6 +73,12 @@ function startOver() {
 
 function showFinalScreen() {
   console.log("showing the final screen...")
+
+  const finalPageHTML = `
+    <h1>Great job!</h1>
+    <p>You got ${currentState.score} out of ${QUESTIONS.length} questions correct!</p>`
+
+  renderPageContent(finalPageHTML)
 }
 
 function showNextQuestion() {
