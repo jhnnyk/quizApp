@@ -113,11 +113,20 @@ function showPrevQuestion() {
 }
 
 function updateScore() {
-  console.log("updating the score...")
+  currentState.score++
+  console.log(`your score is now: ${currentState.score}`)
 }
 
 function checkAnswer() {
-  console.log("checking the answer...")
+  $('.js-content').on('click', '.quiz-form input', event => {
+    console.log(`checking the answer: ${event.currentTarget.value}`)
+    if (event.currentTarget.value === QUESTIONS[currentState.question].answer) {
+      console.log("correct!!")
+      updateScore()
+    } else {
+      console.log("Sorry, that's not right.")
+    }
+  })
 }
 
 function renderPageContent(html) {
@@ -131,10 +140,10 @@ function generateQuestionHTML(index) {
   const questionHTML = `
     <form class="quiz-form" action="#" method="post">
       <h1 class="question">${currentQuestion.question}</h1>
-      <input type="radio" name="question1" id="answer1"><label for="answer1">${currentQuestion.choices[0]}</label>
-      <input type="radio" name="question1" id="answer2"><label for="answer2">${currentQuestion.choices[1]}</label>
-      <input type="radio" name="question1" id="answer3"><label for="answer3">${currentQuestion.choices[2]}</label>
-      <input type="radio" name="question1" id="answer4"><label for="answer4">${currentQuestion.choices[3]}</label>
+      <input type="radio" name="question1" id="answer1" value="${currentQuestion.choices[0]}"><label for="answer1">${currentQuestion.choices[0]}</label>
+      <input type="radio" name="question1" id="answer2" value="${currentQuestion.choices[1]}"><label for="answer2">${currentQuestion.choices[1]}</label>
+      <input type="radio" name="question1" id="answer3" value="${currentQuestion.choices[2]}"><label for="answer3">${currentQuestion.choices[2]}</label>
+      <input type="radio" name="question1" id="answer4" value="${currentQuestion.choices[3]}"><label for="answer4">${currentQuestion.choices[3]}</label>
     </form>`
 
   return questionHTML
@@ -182,6 +191,7 @@ function runQuiz() {
   showNextQuestion()
   showPrevQuestion()
   startOver()
+  checkAnswer()
 }
 
 $(runQuiz())
