@@ -1,3 +1,8 @@
+const currentState = {
+  question: 0,
+  score: 0
+}
+
 const QUESTIONS = [
   {
     question: "What is the elevation at the summit of Mt. Evans?",
@@ -71,7 +76,12 @@ function showFinalScreen() {
 }
 
 function showNextQuestion() {
-  console.log("getting the next question...")
+  $('.js-next-question').on('click', event => {
+    console.log("getting the next question...")
+    currentState.question++
+    const content = generateQuestionHTML(currentState.question)
+    renderPageContent(content)
+  })
 }
 
 function updateScore() {
@@ -82,27 +92,34 @@ function checkAnswer() {
   console.log("checking the answer...")
 }
 
+function renderPageContent(html) {
+  $('.js-content').html(html)
+}
+
+function generateQuestionHTML(index) {
+  const currentQuestion = QUESTIONS[index]
+  
+  // render question HTML
+  const questionHTML = `
+    <form class="quiz-form" action="#" method="post">
+      <h1 class="question">${currentQuestion.question}</h1>
+      <input type="radio" name="question1" id="answer1"><label for="answer1">${currentQuestion.choices[0]}</label>
+      <input type="radio" name="question1" id="answer2"><label for="answer2">${currentQuestion.choices[1]}</label>
+      <input type="radio" name="question1" id="answer3"><label for="answer3">${currentQuestion.choices[2]}</label>
+      <input type="radio" name="question1" id="answer4"><label for="answer4">${currentQuestion.choices[3]}</label>
+    </form>`
+
+  return questionHTML
+}
+
 function startQuiz() {
   $('.js-start-quiz').on('click', event => {
     console.log("starting the quiz...")
     // get first question
-    const currentQuestion = QUESTIONS[0]
-
-    // render question HTML
-    const questionHTML = `
-      <form class="quiz-form" action="#" method="post">
-        <h1 class="question">${currentQuestion.question}</h1>
-        <input type="radio" name="question1" id="answer1"><label for="answer1">${currentQuestion.choices[0]}</label>
-        <input type="radio" name="question1" id="answer2"><label for="answer2">${currentQuestion.choices[1]}</label>
-        <input type="radio" name="question1" id="answer3"><label for="answer3">${currentQuestion.choices[2]}</label>
-        <input type="radio" name="question1" id="answer4"><label for="answer4">${currentQuestion.choices[3]}</label>
-      </form>`
-
-    // set nav buttons
+    const content = generateQuestionHTML(currentState.question)
+    
     setQuestionNavButtons()
-
-    // render page
-    $('.js-content').html(questionHTML)
+    renderPageContent(content)
   })
 }
 
@@ -128,12 +145,13 @@ function renderWelcomePage() {
     </p>`
   
   setWelcomeNavButtons()
-  $('.js-content').html(welcomeHTML)
+  renderPageContent(welcomeHTML)
 }
 
 function runQuiz() {
   renderWelcomePage()
   startQuiz()
+  showNextQuestion()
 }
 
 $(runQuiz())
