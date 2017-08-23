@@ -78,9 +78,26 @@ function showFinalScreen() {
 function showNextQuestion() {
   $('.js-next-question').on('click', event => {
     console.log("getting the next question...")
-    currentState.question++
-    const content = generateQuestionHTML(currentState.question)
-    renderPageContent(content)
+    if (currentState.question < QUESTIONS.length-1) {
+      currentState.question++
+      const content = generateQuestionHTML(currentState.question)
+      renderPageContent(content)
+    } else {
+      showFinalScreen()
+    }
+  })
+}
+
+function showPrevQuestion() {
+  $('.js-prev-question').on('click', event => {
+    console.log("getting the previous question...")
+    if (currentState.question > 0) {
+      currentState.question--
+      const content = generateQuestionHTML(currentState.question)
+      renderPageContent(content)
+    } else {
+      showFinalScreen()
+    }
   })
 }
 
@@ -152,6 +169,7 @@ function runQuiz() {
   renderWelcomePage()
   startQuiz()
   showNextQuestion()
+  showPrevQuestion()
 }
 
 $(runQuiz())
