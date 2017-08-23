@@ -67,8 +67,13 @@ const QUESTIONS = [
 ]
 
 function startOver() {
-  // reset the score and start over
-  console.log("starting over...")
+  $('.js-reset-quiz').on('click', event => {
+    console.log("starting over...")
+    // reset the score and start over
+    currentState.question = 0
+    currentState.score = 0
+    renderWelcomePage()
+  })
 }
 
 function showFinalScreen() {
@@ -176,6 +181,7 @@ function runQuiz() {
   startQuiz()
   showNextQuestion()
   showPrevQuestion()
+  startOver()
 }
 
 $(runQuiz())
