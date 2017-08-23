@@ -83,12 +83,37 @@ function checkAnswer() {
 }
 
 function startQuiz() {
-  console.log("starting the quiz...")
+  $('.js-start-quiz').on('click', event => {
+    console.log("starting the quiz...")
+    // get first question
+    const currentQuestion = QUESTIONS[0]
+
+    // render question HTML
+    const questionHTML = `
+      <form class="quiz-form" action="#" method="post">
+        <h1 class="question">${currentQuestion.question}</h1>
+        <input type="radio" name="question1" id="answer1"><label for="answer1">${currentQuestion.choices[0]}</label>
+        <input type="radio" name="question1" id="answer2"><label for="answer2">${currentQuestion.choices[1]}</label>
+        <input type="radio" name="question1" id="answer3"><label for="answer3">${currentQuestion.choices[2]}</label>
+        <input type="radio" name="question1" id="answer4"><label for="answer4">${currentQuestion.choices[3]}</label>
+      </form>`
+
+    // set nav buttons
+    setQuestionNavButtons()
+
+    // render page
+    $('.js-content').html(questionHTML)
+  })
 }
 
 function setWelcomeNavButtons() {
   $('button').prop('disabled', true)
   $('button.js-start-quiz').prop('disabled', false)
+}
+
+function setQuestionNavButtons() {
+  $('button').prop('disabled', false)
+  $('button.js-start-quiz').prop('disabled', true)
 }
 
 function renderWelcomePage() {
@@ -108,6 +133,7 @@ function renderWelcomePage() {
 
 function runQuiz() {
   renderWelcomePage()
+  startQuiz()
 }
 
 $(runQuiz())
