@@ -66,24 +66,18 @@ const QUESTIONS = [
   }
 ]
 
-function startOver() {
-  $('.js-reset-quiz').on('click', event => {
-    console.log("starting over...")
-    // reset the score and start over
-    currentState.question = 0
-    currentState.score = 0
-    renderWelcomePage()
+function startQuiz() {
+  $('.js-start-quiz').on('click', event => {
+    console.log("starting the quiz...")
+    // show score and question # status
+    $('.status').show()
+
+    // get first question
+    const content = generateQuestionHTML(currentState.question)
+    
+    setNavButtons('ask')
+    renderPageContent(content)
   })
-}
-
-function showFinalScreen() {
-  console.log("showing the final screen...")
-
-  const finalPageHTML = `
-    <h1>Great job!</h1>
-    <p>You got ${currentState.score} out of ${QUESTIONS.length} questions correct!</p>`
-
-  renderPageContent(finalPageHTML)
 }
 
 function showNextQuestion() {
@@ -98,12 +92,8 @@ function showNextQuestion() {
     }
 
     setNavButtons('ask')
+    updateStatusBar()
   })
-}
-
-function updateScore() {
-  currentState.score++
-  console.log(`your score is now: ${currentState.score}`)
 }
 
 function checkAnswer() {
@@ -120,33 +110,18 @@ function checkAnswer() {
   })
 }
 
-function generateQuestionHTML(index) {
-  const currentQuestion = QUESTIONS[index]
-  
-  // render question HTML
-  const questionHTML = `
-    <form class="quiz-form" action="#" method="post">
-      <h2 class="question">${currentQuestion.question}</h2>
-      <input type="radio" name="question1" id="answer1" value="${currentQuestion.choices[0]}"><label for="answer1">${currentQuestion.choices[0]}</label><br>
-      <input type="radio" name="question1" id="answer2" value="${currentQuestion.choices[1]}"><label for="answer2">${currentQuestion.choices[1]}</label><br>
-      <input type="radio" name="question1" id="answer3" value="${currentQuestion.choices[2]}"><label for="answer3">${currentQuestion.choices[2]}</label><br>
-      <input type="radio" name="question1" id="answer4" value="${currentQuestion.choices[3]}"><label for="answer4">${currentQuestion.choices[3]}</label>
-    </form>`
-
-  return questionHTML
+function updateScore() {
+  currentState.score++
+  console.log(`your score is now: ${currentState.score}`)
 }
 
-function startQuiz() {
-  $('.js-start-quiz').on('click', event => {
-    console.log("starting the quiz...")
-    // show score and question # status
-    $('.status').show()
-
-    // get first question
-    const content = generateQuestionHTML(currentState.question)
-    
-    setNavButtons('ask')
-    renderPageContent(content)
+function startOver() {
+  $('.js-reset-quiz').on('click', event => {
+    console.log("starting over...")
+    // reset the score and start over
+    currentState.question = 0
+    currentState.score = 0
+    renderWelcomePage()
   })
 }
 
@@ -167,6 +142,22 @@ function setNavButtons(status) {
   }
 }
 
+function generateQuestionHTML(index) {
+  const currentQuestion = QUESTIONS[index]
+  
+  // render question HTML
+  const questionHTML = `
+    <form class="quiz-form" action="#" method="post">
+      <h2 class="question">${currentQuestion.question}</h2>
+      <input type="radio" name="question1" id="answer1" value="${currentQuestion.choices[0]}"><label for="answer1">${currentQuestion.choices[0]}</label><br>
+      <input type="radio" name="question1" id="answer2" value="${currentQuestion.choices[1]}"><label for="answer2">${currentQuestion.choices[1]}</label><br>
+      <input type="radio" name="question1" id="answer3" value="${currentQuestion.choices[2]}"><label for="answer3">${currentQuestion.choices[2]}</label><br>
+      <input type="radio" name="question1" id="answer4" value="${currentQuestion.choices[3]}"><label for="answer4">${currentQuestion.choices[3]}</label>
+    </form>`
+
+  return questionHTML
+}
+
 function renderWelcomePage() {
   console.log("rendering welcome page...")
   // hide score and question # status
@@ -184,6 +175,16 @@ function renderWelcomePage() {
   
   setNavButtons('start')
   renderPageContent(welcomeHTML)
+}
+
+function showFinalScreen() {
+  console.log("showing the final screen...")
+
+  const finalPageHTML = `
+    <h1>Great job!</h1>
+    <p>You got ${currentState.score} out of ${QUESTIONS.length} questions correct!</p>`
+
+  renderPageContent(finalPageHTML)
 }
 
 function renderPageContent(html) {
