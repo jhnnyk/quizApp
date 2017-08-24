@@ -113,11 +113,9 @@ function checkAnswer() {
     } else {
       console.log("Sorry, that's not right.")
     }
-  })
-}
 
-function renderPageContent(html) {
-  $('.js-content').html(html)
+    setNavButtons('answered')
+  })
 }
 
 function generateQuestionHTML(index) {
@@ -142,19 +140,26 @@ function startQuiz() {
     // get first question
     const content = generateQuestionHTML(currentState.question)
     
-    setQuestionNavButtons()
+    setNavButtons('ask')
     renderPageContent(content)
   })
 }
 
-function setWelcomeNavButtons() {
+function setNavButtons(status) {
   $('button').prop('disabled', true)
-  $('button.js-start-quiz').prop('disabled', false)
-}
 
-function setQuestionNavButtons() {
-  $('button').prop('disabled', false)
-  $('button.js-start-quiz').prop('disabled', true)
+  switch (status) {
+    case 'start':
+      $('button.js-start-quiz').prop('disabled', false)
+      break
+    case 'ask':
+      $('button.js-reset-quiz').prop('disabled', false)
+      break
+    case 'answered':
+      $('button.js-reset-quiz').prop('disabled', false)
+      $('button.js-next-question').prop('disabled', false)
+      break
+  }
 }
 
 function renderWelcomePage() {
@@ -168,8 +173,12 @@ function renderWelcomePage() {
       Please start the quiz with the buttons below.
     </p>`
   
-  setWelcomeNavButtons()
+  setNavButtons('start')
   renderPageContent(welcomeHTML)
+}
+
+function renderPageContent(html) {
+  $('.js-content').html(html)
 }
 
 function runQuiz() {
