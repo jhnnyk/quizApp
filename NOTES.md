@@ -1,25 +1,25 @@
 ## User Stories
 - [x] A User should be able to click a button on the start screen to start the quiz
-- [ ] Users should be prompted through a series of multiple choice questions
-    - [ ] Users should be able to answer the questions
-    - [ ] Users should be asked questions one after the other
+- [x] Users should be prompted through a series of multiple choice questions
+    - [x] Users should be able to answer the questions
+    - [x] Users should be asked questions one after the other
     - [x] Users should only be prompted with one question at a time
-- [ ] Users should be able to answer questions with the mouse *or* the keyboard
-- [ ] Users should **not** be able to skip questions
-- [ ] Users should be able to see what question they're on (ie question 7/10)
-- [ ] Users should be able to see their current score
-- [ ] Upon submitting an answer, users should:
-    - [ ] receive textual feedback about their answer
-        - [ ] if they were incorrect, they should be told the correct answer
-    - [ ] be able to move to the next question
-- [ ] Users should be shown their overall score at the end of the quiz
-- [ ] Users should be able to start a new game
+- [x] Users should be able to answer questions with the mouse *or* the keyboard
+- [x] Users should **not** be able to skip questions
+- [x] Users should be able to see what question they're on (ie question 7/10)
+- [x] Users should be able to see their current score
+- [x] Upon submitting an answer, users should:
+    - [x] receive textual feedback about their answer
+        - [x] if they were incorrect, they should be told the correct answer
+    - [x] be able to move to the next question
+- [x] Users should be shown their overall score at the end of the quiz
+- [x] Users should be able to start a new game
 
 ---
 ## TODOs
 - [x] hide and show score and question # number info at the beginning and end of quiz
-- [ ] update score display after each correctly answered question
-- [ ] update question # on each question page
+- [x] update score display after each correctly answered question
+- [x] update question # on each question page
 - [ ] disable inputs once question has been answered
 
 ---

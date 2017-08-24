@@ -14,13 +14,13 @@ const QUESTIONS = [
     question: "How many ecosystems do you travel through on your way up Mt. Evans?",
     choices: ["1", "2", "4", "7"],
     answer: "4",
-    additionalInfo: "There are 4 ecosystems on Mt. Evans: Montane (7500-9500 ft), SubAlpine (9500-11000 ft), Krummholz Transition Zone (11000-11500 ft), Alpine Tundra (11500+ ft)"
+    additionalInfo: "There are 4 ecosystems on Mt. Evans: Montane (7500-9500 ft), SubAlpine (9500-11000 ft), Krummholz Transition Zone (11000-11500 ft), Alpine Tundra (11500+ ft)."
   }, 
   {
     question: "What is Colorado's Official State Animal?",
     choices: ["Rocky Mountain Bighorn Sheep", "Mountain Goat", "Marmot", "Black Bear"], 
     answer: "Rocky Mountain Bighorn Sheep", 
-    additionalInfo: "Colorado's Official State Animal is the Rocky Mountain Bighorn Sheep"
+    additionalInfo: "Colorado's Official State Animal is the Rocky Mountain Bighorn Sheep."
   }, 
   {
     question: "What is the only bird that lives on the tundra year round?",
@@ -32,7 +32,7 @@ const QUESTIONS = [
     question: "How big is the Mt. Evans Wilderness Area?",
     choices: ["0 - 25 square miles", "25 - 50 square miles", "50 - 100 square miles", "more than 100 square miles"],
     answer: "more than 100 square miles",
-    additionalInfo: "The Mt. Evans Wilderness Area is 74401 acres or 116.25 square miles."
+    additionalInfo: "The Mt. Evans Wilderness Area is 74,401 acres or 116.25 square miles."
   },
   {
     question: "What large rodent related to the woodchuck lives on Mt. Evans?",
@@ -101,9 +101,17 @@ function checkAnswer() {
     console.log(`checking the answer: ${event.currentTarget.value}`)
     if (event.currentTarget.value === QUESTIONS[currentState.question].answer) {
       console.log("correct!!")
+      $(event.currentTarget).parent().addClass('correct')
+      $(event.currentTarget).parent().append(`<span>
+          Correct! ${QUESTIONS[currentState.question].additionalInfo}
+        </span>`)
       updateScore()
     } else {
       console.log("Sorry, that's not right.")
+      $(event.currentTarget).parent().addClass('incorrect')
+      $(event.currentTarget).parent().append(`<span>
+          Sorry, try again.
+        </span>`)
     }
 
     setNavButtons('answered')
@@ -156,10 +164,18 @@ function generateQuestionHTML(index) {
   const questionHTML = `
     <form class="quiz-form" action="#" method="post">
       <h2 class="question">${currentQuestion.question}</h2>
-      <input type="radio" name="question1" id="answer1" value="${currentQuestion.choices[0]}"><label for="answer1">${currentQuestion.choices[0]}</label><br>
-      <input type="radio" name="question1" id="answer2" value="${currentQuestion.choices[1]}"><label for="answer2">${currentQuestion.choices[1]}</label><br>
-      <input type="radio" name="question1" id="answer3" value="${currentQuestion.choices[2]}"><label for="answer3">${currentQuestion.choices[2]}</label><br>
-      <input type="radio" name="question1" id="answer4" value="${currentQuestion.choices[3]}"><label for="answer4">${currentQuestion.choices[3]}</label>
+      <div class="choice">
+        <input type="radio" name="question1" id="answer1" value="${currentQuestion.choices[0]}"><label for="answer1">${currentQuestion.choices[0]}</label>
+      </div>
+      <div class="choice">
+        <input type="radio" name="question1" id="answer2" value="${currentQuestion.choices[1]}"><label for="answer2">${currentQuestion.choices[1]}</label>
+      </div>
+      <div class="choice">
+        <input type="radio" name="question1" id="answer3" value="${currentQuestion.choices[2]}"><label for="answer3">${currentQuestion.choices[2]}</label>
+      </div>
+      <div class="choice">
+        <input type="radio" name="question1" id="answer4" value="${currentQuestion.choices[3]}"><label for="answer4">${currentQuestion.choices[3]}</label>
+      </div>
     </form>`
 
   return questionHTML
