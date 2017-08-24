@@ -137,6 +137,9 @@ function generateQuestionHTML(index) {
 function startQuiz() {
   $('.js-start-quiz').on('click', event => {
     console.log("starting the quiz...")
+    // show score and question # status
+    $('.status').show()
+
     // get first question
     const content = generateQuestionHTML(currentState.question)
     
@@ -164,6 +167,10 @@ function setNavButtons(status) {
 
 function renderWelcomePage() {
   console.log("rendering welcome page...")
+  // hide score and question # status
+  $('.status').hide()
+
+  // set welcome text
   const welcomeHTML = `
     <h2>Welcome to the Mt. Evans Quiz!</h2>
     <p>

@@ -15,6 +15,13 @@
 - [ ] Users should be shown their overall score at the end of the quiz
 - [ ] Users should be able to start a new game
 
+---
+## TODOs
+- [x] hide and show score and question # number info at the beginning and end of quiz
+- [ ] update score display after each correctly answered question
+- [ ] update question # on each question page
+
+---
 ## Mt. Evans Questions
 1. What is the elevation at the summit of Mt. Evans?
     * 14264 feet
