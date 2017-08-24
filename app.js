@@ -113,6 +113,7 @@ function checkAnswer() {
 function updateScore() {
   currentState.score++
   console.log(`your score is now: ${currentState.score}`)
+  updateStatusBar()
 }
 
 function startOver() {
@@ -121,8 +122,14 @@ function startOver() {
     // reset the score and start over
     currentState.question = 0
     currentState.score = 0
+    updateStatusBar()
     renderWelcomePage()
   })
+}
+
+function updateStatusBar() {
+  $('.js-question-number').text(`Question ${currentState.question + 1}/10`)
+  $('.js-score').text(`Score: ${currentState.score}`)
 }
 
 function setNavButtons(status) {

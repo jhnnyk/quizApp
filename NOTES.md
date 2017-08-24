@@ -20,6 +20,7 @@
 - [x] hide and show score and question # number info at the beginning and end of quiz
 - [ ] update score display after each correctly answered question
 - [ ] update question # on each question page
+- [ ] disable inputs once question has been answered
 
 ---
 ## Mt. Evans Questions
