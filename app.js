@@ -105,7 +105,10 @@ function checkAnswer() {
       $(event.currentTarget).parent().append(`<span>
           Correct! ${QUESTIONS[currentState.question].additionalInfo}
         </span>`)
+      // stop people from racking up points!
+      $(event.currentTarget).attr('disabled', true)
       updateScore()
+
     } else {
       console.log("Sorry, that's not right.")
       $(event.currentTarget).parent().addClass('incorrect')
