@@ -96,6 +96,8 @@ function showNextQuestion() {
     } else {
       showFinalScreen()
     }
+
+    setNavButtons('ask')
   })
 }
 
