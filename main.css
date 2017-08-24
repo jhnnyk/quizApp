@@ -16,11 +16,12 @@ h1 {
   font-family: 'Raleway', Sans-Serif;
   font-size: 44px;
   text-align: center;
+  text-shadow: 0 0 5px #fff;
 }
 
 .container {
   max-width: 800px;
-  margin: 100px auto;
+  margin: 50px auto 100px;
   background:rgba(255,255,255,0.6);
   padding: 20px 40px 40px;
   border-radius: 30px;
