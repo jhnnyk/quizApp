@@ -1,9 +1,9 @@
 ## User Stories
-- [ ] A User should be able to click a button on the start screen to start the quiz
+- [x] A User should be able to click a button on the start screen to start the quiz
 - [ ] Users should be prompted through a series of multiple choice questions
     - [ ] Users should be able to answer the questions
     - [ ] Users should be asked questions one after the other
-    - [ ] Users should only be prompted with one question at a time
+    - [x] Users should only be prompted with one question at a time
 - [ ] Users should be able to answer questions with the mouse *or* the keyboard
 - [ ] Users should **not** be able to skip questions
 - [ ] Users should be able to see what question they're on (ie question 7/10)

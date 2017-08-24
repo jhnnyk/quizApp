@@ -99,19 +99,6 @@ function showNextQuestion() {
   })
 }
 
-function showPrevQuestion() {
-  $('.js-prev-question').on('click', event => {
-    console.log("getting the previous question...")
-    if (currentState.question > 0) {
-      currentState.question--
-      const content = generateQuestionHTML(currentState.question)
-      renderPageContent(content)
-    } else {
-      showFinalScreen()
-    }
-  })
-}
-
 function updateScore() {
   currentState.score++
   console.log(`your score is now: ${currentState.score}`)
@@ -189,7 +176,6 @@ function runQuiz() {
   renderWelcomePage()
   startQuiz()
   showNextQuestion()
-  showPrevQuestion()
   startOver()
   checkAnswer()
 }
