@@ -139,10 +139,10 @@ function generateQuestionHTML(index) {
   // render question HTML
   const questionHTML = `
     <form class="quiz-form" action="#" method="post">
-      <h1 class="question">${currentQuestion.question}</h1>
-      <input type="radio" name="question1" id="answer1" value="${currentQuestion.choices[0]}"><label for="answer1">${currentQuestion.choices[0]}</label>
-      <input type="radio" name="question1" id="answer2" value="${currentQuestion.choices[1]}"><label for="answer2">${currentQuestion.choices[1]}</label>
-      <input type="radio" name="question1" id="answer3" value="${currentQuestion.choices[2]}"><label for="answer3">${currentQuestion.choices[2]}</label>
+      <h2 class="question">${currentQuestion.question}</h2>
+      <input type="radio" name="question1" id="answer1" value="${currentQuestion.choices[0]}"><label for="answer1">${currentQuestion.choices[0]}</label><br>
+      <input type="radio" name="question1" id="answer2" value="${currentQuestion.choices[1]}"><label for="answer2">${currentQuestion.choices[1]}</label><br>
+      <input type="radio" name="question1" id="answer3" value="${currentQuestion.choices[2]}"><label for="answer3">${currentQuestion.choices[2]}</label><br>
       <input type="radio" name="question1" id="answer4" value="${currentQuestion.choices[3]}"><label for="answer4">${currentQuestion.choices[3]}</label>
     </form>`
 
